@@ -256,14 +256,14 @@ export default function WindowLayout({
 
         {winVisualState === 'maximized' ? (
           <button
-            className="hover:bg-gray-100 hover:bg-opacity-20 px-5 h-full"
+            className="hidden lg:block hover:bg-gray-100 hover:bg-opacity-20 px-5 h-full"
             onClick={demaximizeWindow}
           >
             {iconWinDemaximize()}
           </button>
         ) : (
           <button
-            className="hover:bg-gray-100 hover:bg-opacity-20 px-5 h-full"
+            className="hidden lg:block hover:bg-gray-100 hover:bg-opacity-20 px-5 h-full"
             onClick={maximizeWindow}
           >
             {iconWinMaximize()}

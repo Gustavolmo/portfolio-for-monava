@@ -3,7 +3,6 @@ import WindowButton from '../window-lib/window-manager/window-button'
 import WindowLayout from '../window-lib/window-manager/window-layout'
 import { createWindowStore } from '../window-lib/window-manager/window-store-factory'
 import WorkspaceLayout from '../window-lib/window-manager/workspace-layout'
-import { resetAllWindows } from '../window-lib/window-manager/window-global-actions'
 import profilePic from '../assets/profile-pic-circlewhite.png'
 
 const myStackStore = createWindowStore('window-myStack')
@@ -43,7 +42,11 @@ export default function Home() {
           </div>
         </div>
 
-        <WindowLayout defaultDock="full" useWindowStore={allverkStore} windowName={'allverk.se'}>
+        <WindowLayout
+          defaultDock={(() => (window.innerWidth < 800 ? 'full' : 'right'))()}
+          useWindowStore={allverkStore}
+          windowName={'allverk.se'}
+        >
           <iframe
             className={`
               w-full h-full
@@ -54,7 +57,7 @@ export default function Home() {
         </WindowLayout>
 
         <WindowLayout
-          defaultDock="full"
+          defaultDock={(() => (window.innerWidth < 800 ? 'full' : 'left'))()}
           useWindowStore={offertAllverkStore}
           windowName={'offert.allverk.se'}
         >
@@ -171,11 +174,17 @@ export default function Home() {
           <WindowButton useWindowStore={myStackStore} styles="px-2">
             <CodeXml className="text-zinc-400 hover:text-zinc-50" />
           </WindowButton>
+          <WindowButton useWindowStore={allverkStore} styles="px-2">
+            <p className="font-mono text-zinc-400 hover:text-zinc-200">Allverk</p>
+          </WindowButton>
+          <WindowButton useWindowStore={offertAllverkStore} styles="px-2">
+            <p className="font-mono text-zinc-400 hover:text-zinc-200">Offert.allverk</p>
+          </WindowButton>
         </div>
 
-        <button onClick={resetAllWindows} className="uppercase text-white opacity-50 text-xs">
+        {/* <button onClick={resetAllWindows} className="uppercase text-white opacity-50 text-xs">
           Reset All Windows
-        </button>
+        </button> */}
 
         <div className="flex gap-4 items-center">
           <a target="_blank" href="https://www.linkedin.com/in/gustavo-l-m-de-oliveira-037243108/">
