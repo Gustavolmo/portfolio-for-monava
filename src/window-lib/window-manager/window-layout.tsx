@@ -8,7 +8,7 @@ type StoreProp = {
   children: React.ReactNode
   windowName: string | React.ReactNode
   navbarChildren?: React.ReactNode
-  defaultDock?: 'right' | 'left'
+  defaultDock?: 'right' | 'left' | 'full'
   useWindowStore: UseBoundStore<StoreApi<WindowStore>>
 }
 
@@ -71,6 +71,7 @@ export default function WindowLayout({
     setSelf(windowRef)
     if (defaultDock === 'left') dockWindowLeft()
     else if (defaultDock === 'right') dockWindowRight()
+    else if (defaultDock === 'full') maximizeWindow()
     else demaximizeWindow()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setSelf, windowRef, resetFlag])

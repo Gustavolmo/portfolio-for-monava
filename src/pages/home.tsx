@@ -1,4 +1,4 @@
-import { CodeXml, Github, Linkedin } from 'lucide-react'
+import { CodeXml, Cpu, Github, Globe, Linkedin, Terminal } from 'lucide-react'
 import WindowButton from '../window-lib/window-manager/window-button'
 import WindowLayout from '../window-lib/window-manager/window-layout'
 import { createWindowStore } from '../window-lib/window-manager/window-store-factory'
@@ -68,15 +68,99 @@ export default function Home() {
         </WindowLayout>
 
         <WindowLayout
+          defaultDock="full"
           useWindowStore={myStackStore}
           windowName={<CodeXml className="text-zinc-400" />}
         >
-          <div className="w-full h-full bg-zinc-200 p-4 flex justify-center">
-            <section className="max-w-4xl max-auto flex w-full justify-between flex-wrap gap-8">
-              <article>
-                <img src={profilePic} alt="profile-pic" className="h-32 w-32" />
-              </article>
-              <article>bla bla bla</article>
+          <div className="w-full h-full bg-zinc-50 p-6 md:p-10 flex justify-center">
+            <section className="max-w-xl w-full flex flex-col gap-12">
+              {/* Profile Section */}
+              <div className="flex flex-wrap items-start justify-between gap-8">
+                <article className="flex-shrink-0">
+                  <div className="relative group">
+                    <div className="absolute -inset-1 rounded-2xl blur opacity-25"></div>
+                    <img
+                      src={profilePic}
+                      alt="profile-pic"
+                      className="relative h-32 w-32 md:h-40 md:w-40 rounded-full object-cover grayscale hover:grayscale-0 transition-all duration-500 border border-zinc-200"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </article>
+
+                <article className="flex-1 min-w-[280px]">
+                  <header className="mb-4">
+                    <h1 className="text-3xl font-bold text-zinc-900 tracking-tight">
+                      Gustavo Oliveira
+                    </h1>
+                    <p className="text-zinc-500 font-medium flex items-center gap-2 mt-1">
+                      <Cpu size={16} />
+                      Systems Architect & Full-Stack Engineer
+                    </p>
+                  </header>
+
+                  <div className="space-y-4 text-zinc-600 leading-relaxed">
+                    <p>
+                      I build robust, scalable systems with a focus on performance and clean
+                      architecture. Passionate about low-level optimizations and modern web
+                      technologies.
+                    </p>
+                    <div className="flex items-center gap-4 text-zinc-400">
+                      <span className="w-1 h-1 rounded-full bg-zinc-300" />
+                      <span className="flex items-center gap-1 text-xs uppercase tracking-widest font-bold">
+                        <Globe size={12} /> Remote / Stockholm
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              {/* Skills Section */}
+              <section className="border-t border-zinc-200 pt-8">
+                <h2 className="text-sm font-bold text-zinc-400 uppercase tracking-[0.2em] mb-6 flex items-center gap-2">
+                  <Terminal size={14} /> Core Competencies
+                </h2>
+
+                <div className="flex flex-wrap gap-3">
+                  {[
+                    { name: 'Go', color: 'bg-sky-50 text-sky-700 border-sky-200' },
+                    { name: 'C#', color: 'bg-purple-50 text-purple-700 border-purple-200' },
+                    { name: 'TypeScript', color: 'bg-blue-50 text-blue-700 border-blue-200' },
+                    {
+                      name: 'PostgreSQL',
+                      color: 'bg-emerald-100 text-emerald-700 border-emerald-200',
+                    },
+                    { name: 'NoSQL', color: 'bg-green-100 text-green-700 border-green-200' },
+                    { name: 'React', color: 'bg-slate-100 text-slate-700 border-slate-200' },
+                  ].map((skill) => (
+                    <span
+                      key={skill.name}
+                      className={`px-4 py-1.5 rounded-full text-sm font-semibold border cursor-default ${skill.color}`}
+                    >
+                      {skill.name}
+                    </span>
+                  ))}
+                </div>
+              </section>
+
+              {/* Footer Info */}
+              <footer className="mt-auto pt-8 text-[10px] text-zinc-400 uppercase tracking-widest flex justify-between items-center">
+                <span>Last Updated: Feb 2026</span>
+                <div className="flex gap-4">
+                  <a
+                    href="https://github.com/Gustavolmo"
+                    className="hover:text-zinc-900 transition-colors"
+                  >
+                    GitHub
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/gustavo-l-m-de-oliveira-037243108/"
+                    className="hover:text-zinc-900 transition-colors"
+                  >
+                    LinkedIn
+                  </a>
+                </div>
+              </footer>
             </section>
           </div>
         </WindowLayout>
