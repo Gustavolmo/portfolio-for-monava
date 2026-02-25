@@ -175,16 +175,12 @@ export default function Home() {
             <CodeXml className="text-zinc-400 hover:text-zinc-50" />
           </WindowButton>
           <WindowButton useWindowStore={allverkStore} styles="px-2">
-            <p className="font-mono text-zinc-400 hover:text-zinc-200">Allverk</p>
+            <p className="font-mono text-zinc-400 hover:text-zinc-200 text-xs sm:text-base">Allverk</p>
           </WindowButton>
           <WindowButton useWindowStore={offertAllverkStore} styles="px-2">
-            <p className="font-mono text-zinc-400 hover:text-zinc-200">Offert.allverk</p>
+            <p className="font-mono text-zinc-400 hover:text-zinc-200 text-xs sm:text-base">Offert.allverk</p>
           </WindowButton>
         </div>
-
-        {/* <button onClick={resetAllWindows} className="uppercase text-white opacity-50 text-xs">
-          Reset All Windows
-        </button> */}
 
         <div className="flex gap-4 items-center">
           <a target="_blank" href="https://www.linkedin.com/in/gustavo-l-m-de-oliveira-037243108/">
