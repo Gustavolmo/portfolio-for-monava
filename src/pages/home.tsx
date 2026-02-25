@@ -39,7 +39,7 @@ export default function Home() {
                 allverk.se
               </WindowButton>{' '}
               <p className="text-sm opacity-80">
-                Embeddings and AI powered vector search engine (React, Go, PostgreSQL)
+                Embeddings and AI powered vector search engine (React, Go and PgSQL)
               </p>
             </div>
             <div className="font-sans w-full text-white opacity-80 font-thin max-w-xl flex flex-col gap-2">
@@ -50,7 +50,7 @@ export default function Home() {
                 offert.allverk.se
               </WindowButton>{' '}
               <p className="text-sm opacity-80">
-                Multi-tenant application + google ads integration (Remix and Go)
+                Multi-tenant application + google ads integration (RR7 and Go)
               </p>
             </div>
           </div>
