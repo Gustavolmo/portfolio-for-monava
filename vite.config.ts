@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: { outDir: 'docs' },
-  base: '/portfolio-for-monava/',
+  base: '/portfolio-v2/',
   esbuild: {
     jsxInject: `import React from 'react'`,
   },

@@ -17,27 +17,31 @@ export default function Home() {
     <>
       <WorkspaceLayout>
         <div className="p-8 w-full h-full flex flex-col items-center mb-32">
+          <p className="font-mono w-full text-white text-2xl uppercase tracking-[0.4em] mb-0 block opacity-20 max-w-xl ">
+            Full Stack Engineer
+          </p>
           <p className="font-sans text-white opacity-80 font-thin mt-4 max-w-xl">
-            Hi Monava, my name is Gustavo. Most of my work contains sensitive Scania data, so I was
-            not sure how to communicate my experience. I wanted to put together something to
-            showcase my know-how so I built this page with a window manager library I wrote myself.
+            Hi, my name is Gustavo. Most of my work contains organization sensitive data, which
+            makes it hard to showcase my experience. Therefore, I wanted to create something simple
+            and dynamic, this portfolio is an example of custom and simple tech that can make a
+            browser experience more dynamic.
           </p>
 
           <div className="flex flex-col gap-4 items-center justify-center mt-16 max-w-xl w-full">
-            <p className="font-mono w-full text-white text-2xl uppercase tracking-[0.4em] mb-0 block opacity-50">
+            <p className="font-mono w-full text-white text-2xl uppercase tracking-[0.4em] mb-0 block opacity-20">
               Case Studies
             </p>
             <div className="font-sans w-full text-white opacity-80 font-thin max-w-xl">
               <WindowButton useWindowStore={allverkStore} styles="underline">
                 allverk.se
               </WindowButton>{' '}
-              - embeddings and AI powered search engine
+              - embeddings and AI powered vector search engine ( React, Go, PostgreSQL )
             </div>
             <div className="font-sans w-full text-white opacity-80 font-thin max-w-xl">
               <WindowButton useWindowStore={offertAllverkStore} styles="underline">
                 offert.allverk.se
               </WindowButton>{' '}
-              - multi-tenant application + google ads integration
+              - multi-tenant application + google ads integration ( Remix and Go )
             </div>
           </div>
         </div>
@@ -52,7 +56,7 @@ export default function Home() {
               w-full h-full
               ${isResizingAllverk || isDraggingAllverk ? 'pointer-events-none' : 'pointer-events-auto'}
             `}
-            src="https://allverk.se/"
+            src="https://www.allverk.se/all/all/all"
           ></iframe>
         </WindowLayout>
 
@@ -126,15 +130,16 @@ export default function Home() {
 
                 <div className="flex flex-wrap gap-3">
                   {[
-                    { name: 'Go', color: 'bg-sky-50 text-sky-700 border-sky-200' },
-                    { name: 'C#', color: 'bg-purple-50 text-purple-700 border-purple-200' },
+                    { name: 'Go', color: 'bg-sky-100 text-sky-700 border-sky-200' },
+                    { name: 'C#', color: 'bg-purple-100 text-purple-700 border-purple-200' },
                     { name: 'TypeScript', color: 'bg-blue-50 text-blue-700 border-blue-200' },
+                    { name: 'React', color: 'bg-amber-100 text-amber-700 border-amber-200' },
+                    { name: 'NextJs', color: 'bg-gray-200 text-gray-700 border-gray-300' },
                     {
                       name: 'PostgreSQL',
                       color: 'bg-emerald-100 text-emerald-700 border-emerald-200',
                     },
                     { name: 'NoSQL', color: 'bg-green-100 text-green-700 border-green-200' },
-                    { name: 'React', color: 'bg-slate-100 text-slate-700 border-slate-200' },
                   ].map((skill) => (
                     <span
                       key={skill.name}
@@ -175,10 +180,14 @@ export default function Home() {
             <CodeXml className="text-zinc-400 hover:text-zinc-50" />
           </WindowButton>
           <WindowButton useWindowStore={allverkStore} styles="px-2">
-            <p className="font-mono text-zinc-400 hover:text-zinc-200 text-xs sm:text-base">Allverk</p>
+            <p className="font-mono text-zinc-400 hover:text-zinc-200 text-xs sm:text-base">
+              Allverk
+            </p>
           </WindowButton>
           <WindowButton useWindowStore={offertAllverkStore} styles="px-2">
-            <p className="font-mono text-zinc-400 hover:text-zinc-200 text-xs sm:text-base">Offert.allverk</p>
+            <p className="font-mono text-zinc-400 hover:text-zinc-200 text-xs sm:text-base">
+              Offert.allverk
+            </p>
           </WindowButton>
         </div>
 
