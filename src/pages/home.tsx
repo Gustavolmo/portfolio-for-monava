@@ -20,28 +20,38 @@ export default function Home() {
           <p className="font-mono w-full text-white text-2xl uppercase tracking-[0.4em] mb-0 block opacity-20 max-w-xl ">
             Full Stack Engineer
           </p>
-          <p className="font-sans text-white opacity-80 font-thin mt-4 max-w-xl">
+          <p className="font-sans text-white opacity-80 font-thin mt-4 max-w-xl text-sm sm:text-base">
             Hi, my name is Gustavo. Most of my work contains organization sensitive data, which
             makes it hard to showcase my experience. Therefore, I wanted to create something simple
             and dynamic, this portfolio is an example of custom and simple tech that can make a
             browser experience more dynamic.
           </p>
 
-          <div className="flex flex-col gap-4 items-center justify-center mt-16 max-w-xl w-full">
+          <div className="flex flex-col gap-4 items-center justify-center mt-8 sm:mt-16 max-w-xl w-full">
             <p className="font-mono w-full text-white text-2xl uppercase tracking-[0.4em] mb-0 block opacity-20">
               Case Studies
             </p>
-            <div className="font-sans w-full text-white opacity-80 font-thin max-w-xl">
-              <WindowButton useWindowStore={allverkStore} styles="underline">
+            <div className="font-sans w-full text-white opacity-80 font-thin max-w-xl flex flex-col gap-2 mb-4">
+              <WindowButton
+                useWindowStore={allverkStore}
+                styles="border border-neutral-600 bg-neutral-600 bg-opacity-50 hover:bg-opacity-80 px-4 py-1 w-fit"
+              >
                 allverk.se
               </WindowButton>{' '}
-              - embeddings and AI powered vector search engine (React, Go, PostgreSQL)
+              <p className="text-sm opacity-80">
+                Embeddings and AI powered vector search engine (React, Go, PostgreSQL)
+              </p>
             </div>
-            <div className="font-sans w-full text-white opacity-80 font-thin max-w-xl">
-              <WindowButton useWindowStore={offertAllverkStore} styles="underline">
+            <div className="font-sans w-full text-white opacity-80 font-thin max-w-xl flex flex-col gap-2">
+              <WindowButton
+                useWindowStore={offertAllverkStore}
+                styles="border border-neutral-600 bg-neutral-600 bg-opacity-50 hover:bg-opacity-80 px-4 py-1 w-fit"
+              >
                 offert.allverk.se
               </WindowButton>{' '}
-              - multi-tenant application + google ads integration (Remix and Go)
+              <p className="text-sm opacity-80">
+                Multi-tenant application + google ads integration (Remix and Go)
+              </p>
             </div>
           </div>
         </div>
@@ -152,7 +162,7 @@ export default function Home() {
               </section>
 
               {/* Footer Info */}
-              <footer className="mt-auto pt-8 text-[10px] text-zinc-400 uppercase tracking-widest flex justify-between items-center">
+              <footer className="mt-auto pt-8 pb-4 text-[10px] text-zinc-400 uppercase tracking-widest flex justify-between items-center">
                 <span>Last Updated: Feb 2026</span>
                 <div className="flex gap-4">
                   <a
