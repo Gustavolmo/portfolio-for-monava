@@ -43,7 +43,7 @@ export default function Home() {
           </div>
         </div>
 
-        <WindowLayout defaultDock="right" useWindowStore={allverkStore} windowName={'allverk.se'}>
+        <WindowLayout defaultDock="full" useWindowStore={allverkStore} windowName={'allverk.se'}>
           <iframe
             className={`
               w-full h-full
@@ -54,7 +54,7 @@ export default function Home() {
         </WindowLayout>
 
         <WindowLayout
-          defaultDock="left"
+          defaultDock="full"
           useWindowStore={offertAllverkStore}
           windowName={'offert.allverk.se'}
         >

@@ -218,7 +218,7 @@ export default function WindowLayout({
           {navbarChildren}
         </div>
 
-        <div className="flex px-2 shrink-0 gap-1">
+        <div className="hidden lg:flex px-2 shrink-0 gap-1">
           {/* LEFT SIDE */}
           <div className="flex flex-col justify-center gap-1">
             <button
@@ -243,7 +243,7 @@ export default function WindowLayout({
           </div>
         </div>
 
-        <div className="flex px-2 shrink-0 items-center gap-1">
+        <div className="hidden lg:flex px-2 shrink-0 items-center gap-1">
           <button
             className="hover:bg-gray-100 hover:bg-opacity-20 px-[1px] border w-4 h-6 rounded-sm"
             onClick={dockWindowLeft}
