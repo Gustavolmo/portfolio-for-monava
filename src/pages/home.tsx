@@ -35,13 +35,13 @@ export default function Home() {
               <WindowButton useWindowStore={allverkStore} styles="underline">
                 allverk.se
               </WindowButton>{' '}
-              - embeddings and AI powered vector search engine ( React, Go, PostgreSQL )
+              - embeddings and AI powered vector search engine (React, Go, PostgreSQL)
             </div>
             <div className="font-sans w-full text-white opacity-80 font-thin max-w-xl">
               <WindowButton useWindowStore={offertAllverkStore} styles="underline">
                 offert.allverk.se
               </WindowButton>{' '}
-              - multi-tenant application + google ads integration ( Remix and Go )
+              - multi-tenant application + google ads integration (Remix and Go)
             </div>
           </div>
         </div>
