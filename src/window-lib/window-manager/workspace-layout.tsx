@@ -10,7 +10,7 @@ export default function WorkspaceLayout({ children }: Props) {
     <main
       onMouseLeave={stopAllDragAndResize}
       onMouseUp={stopAllDragAndResize}
-      className="absolute flex flex-col overflow-visible h-full w-full workspace-grid-background"
+      className="overflow-hidden h-full w-full"
     >
       <ScreenListeners />
       {children}

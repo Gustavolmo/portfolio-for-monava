@@ -4,7 +4,7 @@ import { Coord, ResizeState, WindowStates, WindowStore } from './window-types'
 
 export const windowRegistry: Record<string, UseBoundStore<StoreApi<WindowStore>>> = {}
 
-export const createWindowStore = (windowId: string, bottomOffset: number = 48) => {
+export const createWindowStore = (windowId: string, bottomOffsetPx: number) => {
   if (windowRegistry[windowId]) throw new Error('This store ID is already in use: ' + windowId)
 
   const zIndexAtLaunch = Object.keys(windowRegistry).length + 1
@@ -55,7 +55,7 @@ export const createWindowStore = (windowId: string, bottomOffset: number = 48) =
     maximizeWindow: () => {
       set({
         winCoord: { pointX: 0, pointY: 0 },
-        winHeight: window.innerHeight - bottomOffset,
+        winHeight: window.innerHeight - bottomOffsetPx,
         winWidth: window.innerWidth,
         winVisualState: 'maximized',
       })
@@ -82,7 +82,7 @@ export const createWindowStore = (windowId: string, bottomOffset: number = 48) =
       set({
         winCoord: { pointX: window.innerWidth / 2, pointY: 0 },
         winWidth: window.innerWidth / 2,
-        winHeight: window.innerHeight - bottomOffset,
+        winHeight: window.innerHeight - bottomOffsetPx,
         winVisualState: 'demaximized',
       })
     },
@@ -90,7 +90,7 @@ export const createWindowStore = (windowId: string, bottomOffset: number = 48) =
       set({
         winCoord: { pointX: 0, pointY: 0 },
         winWidth: window.innerWidth / 2,
-        winHeight: window.innerHeight - bottomOffset,
+        winHeight: window.innerHeight - bottomOffsetPx,
         winVisualState: 'demaximized',
       })
     },
@@ -99,32 +99,32 @@ export const createWindowStore = (windowId: string, bottomOffset: number = 48) =
       set({
         winCoord: {
           pointX: window.innerWidth / 2,
-          pointY: window.innerHeight / 2 - bottomOffset / 2,
+          pointY: window.innerHeight / 2 - bottomOffsetPx / 2,
         },
         winWidth: window.innerWidth / 2,
-        winHeight: window.innerHeight / 2 - bottomOffset / 2,
+        winHeight: window.innerHeight / 2 - bottomOffsetPx / 2,
         winVisualState: 'demaximized',
       }),
     dockWindowTopRight: () =>
       set({
         winCoord: { pointX: window.innerWidth / 2, pointY: 0 },
         winWidth: window.innerWidth / 2,
-        winHeight: window.innerHeight / 2 - bottomOffset / 2,
+        winHeight: window.innerHeight / 2 - bottomOffsetPx / 2,
         winVisualState: 'demaximized',
       }),
 
     dockWindowBottomLeft: () =>
       set({
-        winCoord: { pointX: 0, pointY: window.innerHeight / 2 - bottomOffset / 2 },
+        winCoord: { pointX: 0, pointY: window.innerHeight / 2 - bottomOffsetPx / 2 },
         winWidth: window.innerWidth / 2,
-        winHeight: window.innerHeight / 2 - bottomOffset / 2,
+        winHeight: window.innerHeight / 2 - bottomOffsetPx / 2,
         winVisualState: 'demaximized',
       }),
     dockWindowTopLeft: () =>
       set({
         winCoord: { pointX: 0, pointY: 0 },
         winWidth: window.innerWidth / 2,
-        winHeight: window.innerHeight / 2 - bottomOffset / 2,
+        winHeight: window.innerHeight / 2 - bottomOffsetPx / 2,
         winVisualState: 'demaximized',
       }),
 

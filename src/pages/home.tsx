@@ -5,10 +5,10 @@ import { createWindowStore } from '../window-lib/window-manager/window-store-fac
 import WorkspaceLayout from '../window-lib/window-manager/workspace-layout'
 import profilePic from '../assets/profile-pic-circlewhite.png'
 
-const myStackStore = createWindowStore('window-myStack')
-
-const allverkStore = createWindowStore('window-allverk')
-const offertAllverkStore = createWindowStore('window-offert-allverk')
+const bottomOffsetPx = 48
+const myStackStore = createWindowStore('window-myStack', bottomOffsetPx)
+const allverkStore = createWindowStore('window-allverk', bottomOffsetPx)
+const offertAllverkStore = createWindowStore('window-offert-allverk', bottomOffsetPx)
 
 export default function Home() {
   const { isResizing: isResizingOffert, isDragging: isDraggingOffert } = offertAllverkStore()
@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       <WorkspaceLayout>
-        <div className="p-8 w-full h-full flex flex-col items-center mb-32">
+        <div className="p-8 w-full h-full min-h-[100dvh] flex flex-col items-center mb-32 workspace-grid-background">
           <p className="font-mono w-full text-white text-2xl uppercase tracking-[0.4em] mb-0 block opacity-20 max-w-xl ">
             Full Stack Engineer
           </p>
