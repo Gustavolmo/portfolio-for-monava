@@ -59,7 +59,7 @@ Use `WindowLayout` and pass:
 
 - `useWindowStore` → the store instance  
 - `windowName` → title (string or ReactNode)  
-- `defaultDock` → initial docking behavior  
+- `defaultDock` → initial docking behavior (optional) 
 
 ```tsx
 <WindowLayout
