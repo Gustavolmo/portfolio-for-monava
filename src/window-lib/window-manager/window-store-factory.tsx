@@ -2,19 +2,23 @@ import { create, StoreApi, UseBoundStore } from 'zustand'
 import { RefObject } from 'react'
 import { Coord, ResizeState, WindowStates, WindowStore } from './window-types'
 
-/* FIX ME: On resize, the values are not updated to reflex the new window dimensions, hard issue to solve */
 export const windowRegistry: Record<string, UseBoundStore<StoreApi<WindowStore>>> = {}
 
 export const createWindowStore = (windowId: string, bottomOffset: number = 48) => {
   if (windowRegistry[windowId]) throw new Error('This store ID is already in use: ' + windowId)
 
+  const zIndexAtLaunch = Object.keys(windowRegistry).length + 1
+
   const storeInstance = create<WindowStore>((set, get) => ({
     windowId: windowId,
+
+    isActive: false,
+    setIsActive: (isActive: boolean) => set({ isActive: isActive }),
 
     resetFlag: false,
     reset: () => set({ resetFlag: !get().resetFlag, isWinMinimized: true }),
 
-    zIndex: 10,
+    zIndex: zIndexAtLaunch,
     setZIndex: (newIndex: number) => set({ zIndex: newIndex }),
 
     self: undefined,

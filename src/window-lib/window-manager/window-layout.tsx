@@ -3,6 +3,7 @@ import { useEffect, useRef } from 'react'
 import { StoreApi, UseBoundStore } from 'zustand'
 import { WindowStore, ResizeState } from './window-types'
 import { iconWinMinimize, iconWinDemaximize, iconWinMaximize } from '../window-assets/svg-win-icons'
+import { bringTargetWindowToFront } from './window-global-actions'
 
 type StoreProp = {
   children: React.ReactNode
@@ -24,6 +25,7 @@ export default function WindowLayout({
   const {
     windowId,
     zIndex,
+    isActive,
     setSelf,
 
     resetFlag,
@@ -91,11 +93,6 @@ export default function WindowLayout({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isDragging, x, y])
 
-  const handleNavbarClick = (isDragging: boolean) => {
-    setDragClickOffset({ pointX: x - winCoord.pointX, pointY: y - winCoord.pointY })
-    setIsDragging(isDragging)
-  }
-
   useEffect(() => {
     if (!isResizing) return
 
@@ -110,6 +107,11 @@ export default function WindowLayout({
     if (isResizing === 'bottom-left-all') resizeLeftBottomWidthAndHeight()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isResizing, x, y])
+
+  const handleNavbarClick = (isDragging: boolean) => {
+    setDragClickOffset({ pointX: x - winCoord.pointX, pointY: y - winCoord.pointY })
+    setIsDragging(isDragging)
+  }
 
   const resizeRightWinWidth = () => {
     const winBox = windowRef.current?.getBoundingClientRect()
@@ -185,6 +187,7 @@ export default function WindowLayout({
 
   return (
     <div
+      onMouseDown={() => bringTargetWindowToFront(windowId)}
       id={windowId}
       ref={windowRef}
       style={{
@@ -208,7 +211,10 @@ export default function WindowLayout({
       }}
       className={`fixed bg-white shadow-lg border border-zinc-600`}
     >
-      <nav className={`h-[32px] w-full bg-neutral-800 flex items-center`}>
+      <nav
+        className={`h-[32px] w-full bg-neutral-800 flex items-center
+        ${isActive ? 'brightness-100 opacity-100' : 'brightness-75 opacity-90'}`}
+      >
         <div
           onMouseDown={() => handleNavbarClick(true)}
           onDoubleClick={maximizeWindow}

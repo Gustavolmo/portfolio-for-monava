@@ -1,10 +1,10 @@
 import { create } from 'zustand'
 
-/* 
-The word SCREEN is being used to distinguish between the
-window feature in this library and the real browser window
-SCREEN == BROWSER REAL WINDOW
-*/
+/** @Note
+ *The word SCREEN is being used to distinguish between the
+ * window feature in this library and the real browser window
+ * SCREEN == BROWSER REAL WINDOW
+ */
 type ScreenState = {
   x: number
   y: number

@@ -15,6 +15,9 @@ export type WindowStore = {
   /* Self */
   windowId: string
 
+  isActive: boolean
+  setIsActive: (isActive: boolean) => void
+
   resetFlag: boolean
   reset: () => void
 
