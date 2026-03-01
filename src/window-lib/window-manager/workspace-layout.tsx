@@ -10,7 +10,7 @@ export default function WorkspaceLayout({ children }: Props) {
     <main
       onMouseLeave={stopAllDragAndResize}
       onMouseUp={stopAllDragAndResize}
-      className="absolute overflow-hidden h-full w-full"
+      className="absolute overflow-hidden h-full w-full touch-none"
     >
       <ScreenListeners />
       {children}
