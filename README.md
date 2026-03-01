@@ -1,52 +1,156 @@
-# INCOMPLETE READ ME (IN PROGRESS)
+# React Window Library – Read Me
 
-## How to use
+## Overview
 
-1. Initialize a new window object instance as early as possible:
+A lightweight desktop-style window manager built with:
 
-```tsx
-const someWindow = createWindowStore('some-id')
-const anotherWindow = createWindowStore('another-id')
-// The return is a regular zustandStore, and createWindowStore is a factory-like function
+- **React**
+- **Zustand** (isolated state per window)
+- A shared **WorkspaceLayout**
+- Independent **WindowLayout** instances
+- External **WindowButton** controllers
+
+Each window instance is fully isolated, draggable, dockable, and externally controllable via its own store.
+
+---
+
+## 1. Create a Window Store
+
+Initialize a window instance early (module scope recommended):
+
+```ts
+const myWindow = createWindowStore('window-my-id')
 ```
 
-2. Wrap your windows around the WorkspaceLayout.
-3. Pass the const from createWindowStore() to your window:
+- The ID must be unique.
+- The return value is a standard Zustand hook.
+- Each window is automatically registered internally.
+
+You can create multiple windows:
+
+```ts
+const firstWindow = createWindowStore('window-first')
+const secondWindow = createWindowStore('window-second')
+```
+
+---
+
+## 2. Wrap Everything in `WorkspaceLayout`
+
+All windows must be rendered inside a shared workspace:
 
 ```tsx
-//HelloWorld.tsx
 <WorkspaceLayout>
+  {/* WindowLayout components */}
+</WorkspaceLayout>
+```
 
-  <WindowLayout useAppStore={someWindow}>
-    <div>Hello World</div>
-    <div>In here I can write anything</div>
-  </WindowLayout>
+The workspace acts as:
 
-  <WindowLayout useAppStore={anotherWindow}>
-    <div>I am another window</div>
-    <div>In here I can write anything</div>
-  </WindowLayout>
+- The rendering surface  
+- The stacking context  
+- The coordinate system for all windows  
 
-<WorkspaceLayout>
+---
 
-//Place the button controlling the window wherever you want
-<WindowButton useAppStore={someWindow}>
-  <p>CLICK ME</p> // I control the "someWindow"
-</WindowButton>;
+## 3. Render a Window
 
-<WindowButton useAppStore={anotherWindow}>
-  <p>CLICK ME</p> // I control the "anotherWindow"
+Use `WindowLayout` and pass:
+
+- `useWindowStore` → the store instance  
+- `windowName` → title (string or ReactNode)  
+- `defaultDock` → initial docking behavior  
+
+```tsx
+<WindowLayout
+  useWindowStore={myWindow}
+  windowName="My Window"
+  defaultDock="right"
+>
+  <div>Any React content</div>
+</WindowLayout>
+```
+
+Supported docking modes:
+
+- `"left"`
+- `"right"`
+- `"full"`
+
+Responsive docking can be computed:
+
+```tsx
+defaultDock={window.innerWidth < 800 ? 'full' : 'left'}
+```
+
+---
+
+## 4. Control a Window with `WindowButton`
+
+Place a control button anywhere in your UI:
+
+```tsx
+<WindowButton useWindowStore={myWindow}>
+  <p>Open Window</p>
 </WindowButton>
 ```
 
-4. You can also access the window object via the return from createWindowStore,
-   or with the windowRegistry by referencing it by ID
+- Multiple buttons can control the same window.
+- Buttons are fully decoupled from layout.
+- No prop drilling is required.
+
+---
+
+## 5. Access Window State
+
+Since the store is a standard Zustand hook, you can read window state directly:
+
+```ts
+const { isDragging, isResizing } = myWindow()
+```
+
+Example use case:
 
 ```tsx
-const someWindow = createWindowStore('some-id')
-
-/* LIKE THIS */
-const { someWindowProperty } = someWindow()
-/* OR */
-const { someWindowProperty } = windowRegistry['some-id']()
+className={
+  isDragging || isResizing
+    ? 'pointer-events-none'
+    : 'pointer-events-auto'
+}
 ```
+
+This is useful when embedding iframes or other complex interactive content.
+
+---
+
+## 6. Access via Registry (Optional)
+
+Windows are also registered globally by ID:
+
+```ts
+const { isOpen } = windowRegistry['window-my-id']()
+```
+
+This is useful when you do not have direct access to the original store reference.
+
+---
+
+## Architecture Summary
+
+- `createWindowStore(id)` → creates isolated window state  
+- `WorkspaceLayout` → shared window surface  
+- `WindowLayout` → draggable and dockable container  
+- `WindowButton` → external controller  
+- Zustand → reactive state management  
+
+---
+
+## Design Principles
+
+- Fully decoupled window instances  
+- No global prop chains  
+- Arbitrary React content support (apps, iframes, components)  
+- Independent lifecycle per window  
+- Scalable to many concurrent windows  
+
+This enables building browser-based desktop-style interfaces with minimal setup and clean separation of concerns.

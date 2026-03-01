@@ -255,18 +255,18 @@ export default function Home() {
                     <h3 className="font-semibold text-zinc-800">Architecture</h3>
                     <ul className="list-disc pl-5 space-y-1">
                       <li>
-                        <span className="font-mono">createWindowStore(id)</span> – isolated state
+                        <span className="font-mono">createWindowStore(id)</span> - isolated state
                         per window
                       </li>
                       <li>
-                        <span className="font-mono">WorkspaceLayout</span> – shared render surface
+                        <span className="font-mono">WorkspaceLayout</span> - shared render surface
                       </li>
                       <li>
-                        <span className="font-mono">WindowLayout</span> – draggable/dockable
+                        <span className="font-mono">WindowLayout</span> - draggable/dockable
                         container
                       </li>
                       <li>
-                        <span className="font-mono">WindowButton</span> – external controller
+                        <span className="font-mono">WindowButton</span> - external controller
                       </li>
                     </ul>
                   </div>
@@ -278,12 +278,14 @@ export default function Home() {
                 <span>Last Updated: Feb 2026</span>
                 <div className="flex gap-4">
                   <a
-                    href="https://github.com/Gustavolmo"
+                    target="_blank"
+                    href="https://github.com/Gustavolmo/portfolio-v2"
                     className="hover:text-zinc-900 transition-colors"
                   >
                     GitHub
                   </a>
                   <a
+                    target="_blank"
                     href="https://www.linkedin.com/in/gustavo-l-m-de-oliveira-037243108/"
                     className="hover:text-zinc-900 transition-colors"
                   >
