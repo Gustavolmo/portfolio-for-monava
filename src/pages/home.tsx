@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <>
       <WorkspaceLayout>
-        <div className="p-8 w-full h-full min-h-[100dvh] flex flex-col items-center mb-32 workspace-grid-background">
+        <div className="p-8 w-full h-full flex flex-col items-center mb-32 workspace-grid-background">
           <p className="font-mono w-full text-white text-2xl uppercase tracking-[0.4em] mb-0 block opacity-20 max-w-xl ">
             Full Stack Engineer
           </p>
